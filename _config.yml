@@ -3,10 +3,29 @@ title: "Web Hacker"
 header-img: "img/facebook.jpg"
 #email: your-email@domain.com
 description: "高一宸"
+baseurl: ""
 url: "http://gycg.github.com" # the base hostname & protocol for your site
 
-#github_username: gycg
+# About/contact
+owner:
+    name: "gycg"
+    email: gyc19950117@gmail.com
+    bio: ""
+
+# Data
+favicon: img/favicon.png
+github_username: gycg
 zhihu_username: gycg
 
 # Build settings
 markdown: kramdown
+highlighter: pygments
+permalink: pretty
+paginate: 8
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+relative_permalinks: true
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Chongqing
+
+
