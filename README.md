@@ -1,2 +1,5 @@
 # gycg.github.com
-My Blog
+
+Fork from Azeril,thanks!
+
+My Blog——Web Hacker
