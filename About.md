@@ -6,7 +6,7 @@ header-img: "img/facebook.jpg"
 ---
 
 <center>
-    <p><img src="img/favicon.png" align="center"></p>
+    <p><img src="https://raw.githubusercontent.com/gycg/gycg.github.com/master/img/favicon.png" align="center"></p>
 </center>
 
 
