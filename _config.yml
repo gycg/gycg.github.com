@@ -28,4 +28,19 @@ relative_permalinks: true
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone: Asia/Chongqing
 
+# Defaults for posts:
+defaults:
+  -
+    scope:
+        path: ""
+        type: "posts"
+    values:
+        layout: "posts"
+        author: "gycg"
+        header-img: "img/favicon.jpg"
 
+#Comments
+comments :
+    provider : duoshuo
+    duoshuo :
+        short_name : gycg
