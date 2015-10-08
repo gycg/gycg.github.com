@@ -10,6 +10,7 @@ header-img: "img/facebook.jpg"
 </center>
 
 
-My Name is Gao Yichen.
+This is Gao Yichen's personal website. It was established in October 02,2015. 
+I wish it is useful to you.
 
 

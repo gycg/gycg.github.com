@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Tags"
-description: "博客标签库"  
+description: "Labels of Blog"  
 header-img: "img/facebook.jpg"  
 ---
 
