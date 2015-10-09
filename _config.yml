@@ -37,7 +37,7 @@ defaults:
     values:
         layout: "posts"
         author: "gycg"
-        header-img: "img/favicon.jpg"
+        header-img: "img/facebook.jpg"
 
 #Comments
 comments :
