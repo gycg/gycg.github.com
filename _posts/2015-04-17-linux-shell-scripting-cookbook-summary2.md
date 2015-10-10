@@ -162,7 +162,7 @@ uniq -z file.txt	#生成包含０值字节终止符的输出
 
 uniq -z file.txt | xargs -0 rm	#删除file.txt中指定的文件
 {% endhighlight %}
-**9　临时文件**
+**9 临时文件**
 
 {% highlight ruby %}
 $ filename=`mktemp`
@@ -176,7 +176,7 @@ $ echo $tempfile	#文件名存储在tempfile中，但没有创建对应的文件
 
 $ mktemp test.XXX	＃根据模板创建文件名，至少有３个Ｘ
 {% endhighlight %}
-**10　分割文件**
+**10 分割文件**
 
 {% highlight ruby %}
 split -b 10k data.file	#将data.file分割成多个文件，每个１０ｋ,默认命名x**,"*"为字母，如xaa,xab...
@@ -209,7 +209,6 @@ SERVER-3
 我们需要将这个日志文件分割成server1.log、server2.log和server3.log，这些文件的内容分别取自原文件中不同的SERVER部分。那么，可以使用下面的方法来实现：
 {% highlight ruby %}
 $ csplit server.log /SERVER/ -n 2 -s {*}  -f server -b "%02d.log"  ; rm server00.log
-　
 $ ls
 server01.log  server02.log  server03.log  server.log
 {% endhighlight %}
@@ -329,7 +328,7 @@ send "hello\n"
 expect eof			#命令交互结束
 {% endhighlight %}
 
-**15　利用并行进程加速命令执行**
+**15 利用并行进程加速命令执行**
 
 {% highlight ruby %}
 #!/bin/bash
