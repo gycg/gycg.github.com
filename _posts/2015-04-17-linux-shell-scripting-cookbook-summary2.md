@@ -8,7 +8,7 @@ description: shell学习第二弹
 
 **1 cat技巧**
 
-{% highlight ruby %}
+{% highlight bash %}
 $ cat -s file	#删除多余的空白行
 $ cat -T file	#将制表符显示为^|
 $ cat -n file	#在行首加行号打印
@@ -16,7 +16,7 @@ $ cat -n file	#在行首加行号打印
 **2 录制并回放终端回话**
 
 录制命令
-{% highlight ruby %}
+{% highlight bash %}
 $ script -t 2> timing.log -a output.session
 $ type commands
 $ ...
@@ -25,12 +25,12 @@ $ exit
 {% endhighlight %}
 回放命令
 
-{% highlight ruby %}
+{% highlight bash %}
 scriptreply timing.log output.sesssion
 {% endhighlight %}
 **3 文件查找**
 
-{% highlight ruby %}
+{% highlight bash %}
 find . -name "*.txt" -print	#打印当前目录以.txt结尾的文件名
 
 find . -iname "*example.*" -print	#忽略大小写
@@ -83,7 +83,7 @@ find /src \( -name ".git" -prune \) -o \(-type f -print \)	#打印不包括在.g
 
 **4 xargs**
 
-{% highlight ruby %}
+{% highlight bash %}
 cat example.txt | xargs		#将多行输入转换成单行输出
 
 cat example.txt | xargs -n 3	#多行输出，每行3个参数，每个参数是以空格分开的字符串
@@ -100,7 +100,7 @@ find files.txt | ( while read arg; do cat $arg; done )	#等同于cat files.txt |
 {% endhighlight %}
 **5 tr**
 
-{% highlight ruby %}
+{% highlight bash %}
 echo "HELLO WORLD" | tr 'A-Z' 'a-z'	#转换为小写
 
 echo 12345 | tr '0-9' '9876543210'	#加密
@@ -117,13 +117,13 @@ tr '[:lower:]' '[:upper:]'	#小写转换为大写
 {% endhighlight %}
 **6 校验和与核实**
 
-{% highlight ruby %}
+{% highlight bash %}
 md5sum filename > file_sum.md5	#将校验和存入文件中
 md5sum -c file_sum.md5	#输出校验和是否匹配的消息
 {% endhighlight %}
 **7 加密工具与散列**
 
-{% highlight ruby %}
+{% highlight bash %}
 crypt PASSPHASE <input_file >encrypted_file	#命令行也可以不输密码，会提示输入密码
 crypt PASSPHASE -d <encrypted_file >output_file
 
@@ -135,7 +135,7 @@ base64 -d base64_file > outputfile	#或cat base64_file | base64 -d > outputfile	
 {% endhighlight %}
 **8 排序**
 
-{% highlight ruby %}
+{% highlight bash %}
 sort -r file.txt	#按逆序排序
 
 sort -k 2 data.txt	#根据第二列进行排序
@@ -164,7 +164,7 @@ uniq -z file.txt | xargs -0 rm	#删除file.txt中指定的文件
 {% endhighlight %}
 **9 临时文件**
 
-{% highlight ruby %}
+{% highlight bash %}
 $ filename=`mktemp`
 $ echo $filename	#创建一个临时文件，并打印出文件名
 
@@ -178,7 +178,7 @@ $ mktemp test.XXX	＃根据模板创建文件名，至少有３个Ｘ
 {% endhighlight %}
 **10 分割文件**
 
-{% highlight ruby %}
+{% highlight bash %}
 split -b 10k data.file	#将data.file分割成多个文件，每个１０ｋ,默认命名x**,"*"为字母，如xaa,xab...
 
 split -b 10k data.file -d -a 4	#－ｄ指明以数字命名，－ａ　４指明数字长度为４,前缀为ｘ
@@ -188,7 +188,7 @@ split -b 10k data.file -d -a 4　split_file	#设置前缀为split_file
 split -l 10 data.file	#分割成多个文件，每个文件包含１０行
 {% endhighlight %}
 csplit是split的一个变体，示例如下：
-{% highlight ruby %}
+{% highlight bash %}
 $ cat server.log
 SERVER-1
 [connection] 192.168.0.1 success
@@ -207,7 +207,7 @@ SERVER-3
 [connection] 192.168.0.4 failed
 {% endhighlight %}
 我们需要将这个日志文件分割成server1.log、server2.log和server3.log，这些文件的内容分别取自原文件中不同的SERVER部分。那么，可以使用下面的方法来实现：
-{% highlight ruby %}
+{% highlight bash %}
 $ csplit server.log /SERVER/ -n 2 -s {*}  -f server -b "%02d.log"  ; rm server00.log
 $ ls
 server01.log  server02.log  server03.log  server.log
@@ -232,7 +232,7 @@ server01.log  server02.log  server03.log  server.log
 
 **11 根据扩展名切分文件**
 
-{% highlight ruby %}
+{% highlight bash %}
 $ URL="www.google.com"
 $ echo ${URL%.*}	#移除．*所匹配的最右边的内容
 www.google
@@ -249,7 +249,7 @@ com
 
 **12 重命名**
 
-{% highlight ruby %}
+{% highlight bash %}
 #!/bin/bash
 #文件名：rename.sh
 #用途：重命名.jpg和.png文件
@@ -266,20 +266,7 @@ done
 {% endhighlight %}
 **13 拼写检查和词典操作**
 
-{% highlight ruby %}
-#!/bin/bash
-#文件名：checkword.sh
-word=$1
-grep "^$1$" /usr/share/dict/british-english -q
-#^标记着单词的开始，$标记着单词的结束，－ｑ禁止产生任何输出
-if [ $? -eq 0 ]; then
-	echo $word is a dictionary word;
-else
-	echo $word is not a dictionary word;
-fi
-{% endhighlight %}
-
-{% highlight ruby %}
+{% highlight bash %}
 #!/bin/bash
 #文件名：aspellcheck.sh
 
@@ -295,12 +282,12 @@ else
 fi
 {% endhighlight %}
 
-{% highlight ruby %}
+{% highlight bash %}
 $ look word filepath OR look "^word" filepath	#列出文件中以特定单词开头的所有单词，如果没有给出文件参数，则使用默认词典（/usr/share/dict/words）
 {% endhighlight %}
 **14 交互输入自动化**
 
-{% highlight ruby %}
+{% highlight bash %}
 #!/bin/bash
 #文件名：interctive.sh
 read -p "Enter number:" no;
@@ -308,7 +295,7 @@ read -p "Enter name:" name;
 echo You have entered $no,$name;
 {% endhighlight %}
 
-{% highlight ruby %}
+{% highlight bash %}
 $ echo -e "1\nhello\n" | bash interctive.sh
 You have ectered 1,hello
 
@@ -316,7 +303,7 @@ $ echo -e "1\nhello\n" > input.data
 $ bash interctive.sh < input.data
 {% endhighlight %}
 
-{% highlight ruby %}
+{% highlight bash %}
 #!/usr/bin/expect
 #文件名：automate_expect.sh
 spawn bash interactive.sh	#指定自动化哪个命令
@@ -330,7 +317,7 @@ expect eof			#命令交互结束
 
 **15 利用并行进程加速命令执行**
 
-{% highlight ruby %}
+{% highlight bash %}
 #!/bin/bash
 #文件名：generate_checksums.sh
 PIDARRAY=()

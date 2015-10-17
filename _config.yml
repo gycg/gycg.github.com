@@ -18,7 +18,9 @@ github_username: gycg
 zhihu_username: gycg
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
+redcarpet:
+    extensions: ["tables"]
 highlighter: pygments
 permalink: pretty
 paginate: 8
