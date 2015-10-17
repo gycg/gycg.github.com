@@ -268,6 +268,19 @@ done
 
 {% highlight bash %}
 #!/bin/bash
+#文件名：checkword.sh
+word=$1
+grep "^$1$" /usr/share/dict/british-english -q
+#^标记着单词的开始，$标记着单词的结束，－ｑ禁止产生任何输出
+if [ $? -eq 0 ]; then
+   echo $word is a dictionary word;
+else
+   echo $word is not a dictionary word;
+fi
+{% endhighlight %}
+
+{% highlight bash %}
+#!/bin/bash
 #文件名：aspellcheck.sh
 
 word=$1
