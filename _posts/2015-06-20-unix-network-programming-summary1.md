@@ -154,7 +154,7 @@ void *memset(void *dest, int c, size_t len);
 void *memcpy(void *dest, const void *src, size_t nbytes);
 int memcmp(const void *ptr1, const void *ptr2, size_t nbytes);
 {% endhighlight %}
-###inet_aton,inet_addr和inet_ntoa函数
+###inet\_aton,inet\_addr和inet\_ntoa函数
 用于在点分十进制数串与它长度为32位的网络字节序二进制值间转换IPv4地址。
 {% highlight c %}
 #include <arpa/inet.h>
@@ -165,10 +165,10 @@ in_addr_t inet_addr(const char *strptr);
 char *inet_ntoa(struct in_addr inaddr);
                                     返回：指向一个点分十进制数串的指针
 {% endhighlight %}
-inet_aton将strptr所指C字符串转换成一个32位网络字节序二进制值，并通过指针addrptr来存储。  
-inet_addr与inet_aton进行相同的转换，但是存在一些问题，已经被废弃。  
-inet_ntoa函数将一个32位的网络字节序二进制IPv4地址转换成相应的点分十进制数串。由该函数的返回值所指向的字符串驻留在静态内存中，所以该函数是不可重入的。
-###inet_pton和inet_ntop函数
+inet\_aton将strptr所指C字符串转换成一个32位网络字节序二进制值，并通过指针addrptr来存储。  
+inet\_addr与inet\_aton进行相同的转换，但是存在一些问题，已经被废弃。  
+inet\_ntoa函数将一个32位的网络字节序二进制IPv4地址转换成相应的点分十进制数串。由该函数的返回值所指向的字符串驻留在静态内存中，所以该函数是不可重入的。
+###inet\_pton和inet\_ntop函数
 函数名中p和n分别代表*表达*（presentation）和*数值*（numeric）。  
 {% highlight c %}
 #include <arpa/inet.h>
@@ -222,8 +222,8 @@ inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
 }
 {% endhighlight %}
 ###sock_ntop和相关函数
-在使用sock_ntop时，调用者需要传递一个指向二进制地址的指针，所以知道套接字地址结构的格式，使得代码与协议相关了。  
-所以我们编写了一个名为sock_ntop，它以指向某个套接字地址结构的指针为参数，查看该结构的内部，然后调用适当的函数返回该地址的表达格式。  
+在使用sock\_ntop时，调用者需要传递一个指向二进制地址的指针，所以知道套接字地址结构的格式，使得代码与协议相关了。  
+所以我们编写了一个名为sock\_ntop，它以指向某个套接字地址结构的指针为参数，查看该结构的内部，然后调用适当的函数返回该地址的表达格式。  
 这里的表达格式是在IPv4地址的点分十进制数串之后，或者在一个括以方括号的IPv6地址的十六进制数串格式之后，跟一个终止符（我们使用一个冒号），再跟一个十进制的端口号（5个字节），最后跟一个空字符。因此，缓冲区大小对IPv4来说至少16+6=22字节，对IPv6至少为46+8=54字节。
 {% highlight c %}
 #include "unp.h"
@@ -280,6 +280,8 @@ ssize_t written(int filedes, const void *buff, size_t nbytes);
 ssize_t readline(int filedes, void *buff, size_t nbytes);
 {% endhighlight %}
 size\_t一般为unsigned int，是c语言标准里的，用来表示对象的size;ssize\_t一般为有符号整型（signed size\_t）,来自于POSIX，用来表示字节数或错误标记.  
+  
+
 **readn函数：从一个描述符读n字节**
 {% highlight c %}
 /* filepath: lib/readn.c */
