@@ -2,7 +2,7 @@
 layout: post
 title: Unix Network Programming总结（一）
 categories: [blog ]
-tags: [Network, 建站前 ]
+tags: [Network, ]
 description: Network学习第一弹
 ---
 
