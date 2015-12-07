@@ -2,8 +2,8 @@
 layout: post
 title: linux shell脚本攻略总结（二)
 categories: [blog ]
-tags: [shell, 建站前 ]
-description: shell学习第二弹
+tags: [shell, ]
+description: 命令之乐
 ---
 
 **1 cat技巧**

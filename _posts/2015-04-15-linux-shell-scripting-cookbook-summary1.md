@@ -2,8 +2,8 @@
 layout: post
 title: linux shell脚本攻略总结（一)
 categories: [blog ]
-tags: [shell, 建站前 ]
-description: shell学习首发
+tags: [shell, ]
+description: 小试牛刀
 ---
 
 **1 终端彩色输出**
