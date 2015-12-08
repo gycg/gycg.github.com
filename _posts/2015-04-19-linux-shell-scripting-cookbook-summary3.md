@@ -17,7 +17,7 @@ if代表输入文件（input file），of代表输出文件（output file），b
 **块大小的计量单位**  
 
 |  单元大小         |  代码  |
-|  :-------------   |  :---: |
+|  :-------         |  :---: |
 |  字节（1B）       |  c     |
 |  字（2B）         |  w     |
 |  块（512B）       |  b     |
@@ -81,24 +81,24 @@ steel
 # 文件名： remove_duplicates.sh
 # 用途： 查找并删除重复文件， 每一个文件值保留一份
 
-ls -lS --time-style=long-iso | awk 'BEGIN { 
-    getline; getline;
-    name1=$8; size=$5
-}
-{
-    name2=$8;
-    if (size==$5)
-    {
-        "md5sum "name1 | getline; csum1=$1;
-        "md5sum "name2 | getline; csum2=$1;
-        if ( csum1==csum2 )
-        {
-            print name1; print name2
-        }
-    };
+ls -lS --time-style=long-iso | awk 'BEGIN {   
+    getline; getline;  
+    name1=$8; size=$5  
+}  
+{  
+    name2=$8;  
+    if (size==$5)  
+    {  
+        "md5sum "name1 | getline; csum1=$1;  
+        "md5sum "name2 | getline; csum2=$1;  
+        if ( csum1==csum2 )  
+        {  
+            print name1; print name2  
+        }  
+    };  
     
-    size=$5; name1=name2;
-}' | sort -u > duplicate_files
+    size=$5; name1=name2;  
+}' | sort -u > duplicate_files  
 
 cat duplicate_files | xargs -I {} md5sum {} | sort |uniq -w 32 | awk '{ print "^"$2"$" }' | sort -u > duplicate_sample
 
@@ -120,10 +120,13 @@ ls -lS对当前目录下的所有文件按照文件大小进行排序，并列�
 
 tee将文件名传递给rm命令的同时，也起到了print的作用。tee将来自stdin的行写入文件，同时将其发送到stdout。  
 
-###文件权限、所有权和粘滞位
+###4 文件权限、所有权和粘滞位
 文件的用户权限（权限序列：rwx------）如果设置了setuid（S）位（rwS------），就意味着允许用户以其拥有者的权限执行可执行文件，即使这个可执行文件是由其他用户运行的。  
+
 文件的用户组权限（权限序列：---rwx---）如果设置了setgid（S）位（---rwS---），就意味着允许以同该目录拥有者所在组相同的有效组权限来执行可执行文件。但是这个组和实际发起命令的用户组未必相同。  
+
 目录有一个特殊的权限，叫粘滞位（sticky bit）。如果设置了粘滞位，只有创建该目录的用户才能删除目录中的文件，即使用户组和其他用户也有写权限，也无能为力。如果没有设置执行权限，但设置了粘滞位，就使用t（------rwt）;如果同时设置了执行权限和粘滞位，就使用T（------rwT）。  
+
 {% highlight bash %}
 $ chown user.group filename #更改所有权（用户和用户组）
 $ chmod a+t directory_name #设置粘滞位
@@ -131,3 +134,120 @@ $ chmod 777 . -R    #选项-R指定以递归的方式修改权限
 $ chmod 777 "$pwd" -R   #同上
 $ chown user.group . -R #以递归的方式设置所有权
 {% endhighlight %}
+
+###5 创建不可修改的文件
+{% highlight bash %}
+# chattr +i file    #将文件设置为不可修改
+# rm file
+rm: cannot remove ‘file’: Operation not permitted 
+# chattr -i file    #移除不可修改属性
+{% endhighlight %}
+
+###6 批量生成空白文件
+touch命令可以用来生成空白文件或是修改文件的时间戳（如果文件已存在）。
+{% highlight bash %}
+$ touch filename    #生成名为filename的空白文件
+
+for name in {1..100}.txt    #{1..100}会扩展成一个字符串“1,2,3,4,5,6,7,...,100”
+do
+    touch $name
+done                
+{% endhighlight %}
+如果文件以经存在，那么touch命令会将与该文件相关的所有时间戳都更改为当前时间。如果我们只想更改某些时间戳，则可以使用下面的选项。  
+->touch -a 只更改文件访问时间  
+->touch -m 只更改文件内容修改时间  
+
+还可以将时间戳指定特定的时间和日期：  
+{% highlight bash %}
+touch -d "Fri Jun 25 20:50:14 IST 1999" filename
+{% endhighlight %}
+
+###7 查找符号链接及其指向目标
+{% highlight bash %}
+$ ln -s target symbolic_link_name #创建符号链接
+$ ls -l symbolic_link_name  #验证是否创建链接
+$ ls -l | grep "^l"     #打印出当前目录下的符号链接
+$ find . -type l -print #打印出当前目录以及子目录下的符号链接
+$ readlink symbolic_link_name   #打印出符号链接所指向的目标路径
+{% endhighlight %}
+
+###8 列举文件类型统计信息
+{% highlight bash %}
+$ file /etc/passwd
+/etc/passwd: ASCII text
+$ file -b /etc/passwd
+ASCII text
+{% endhighlight %}
+**生成文件统计信息的脚本**
+{% highlight bash %}
+# !/bin/bash
+# 文件名： filestat.sh
+
+if [ $# -ne 1 ];
+then
+    echo "Usage is $0 basepath";
+    exit;
+fi
+path=$1
+
+declare -A statarry;
+
+while read line;
+do
+    ftype=`file -b "$line" | cut -d, -f1`
+    let statarry["$ftype"]++;
+
+done < <(find $path -type f -print)
+
+echo =========== File types and counts ===========
+for ftype in "${!statarry[@]}";
+do
+    echo $ftype : ${statarry["$ftype"]}
+done
+{% endhighlight %}
+
+###9 使用环回文件
+环回文件系统是指那些在文件中而非物理设备中创建的文件系统。我们可以将这些文件作为文件系统挂载到挂载点上。  
+{% highlight bash %}
+$ dd if=/dev/zero of=loopbackfile.img bs=1G count=1 #这个命令可以创造一个1GB大小的文件
+1+0 records in
+1+0 records out
+1073741824 bytes (1.1 GB) copied, 9.30371 s, 115 MB/s
+
+$ mkfs.ext4 loopbackfile.img    #用mkfs命令将1GB的文件格式化为ext4文件系统
+
+$ file loopbackfile.img     #检查文件系统
+loopbackfile.img: Linux rev 1.0 ext4 filesystem data, UUID=f82122c4-994c-46eb-9f6a-aeec192defb1 (extents) (large files) (huge files)
+
+$ sudo mkdir /mnt/loopback
+$ sudo mount -o loop loopbackfile.img /mnt/loopback/    #挂载环回文件系统
+#另一种方法，手动挂载
+$ sudo losetup /dev/loop1 loopbackfile.img
+$ mount /dev/loop1 /mnt/loopback/
+
+$ sudo umount /mnt/loopback/    #卸载挂载点
+$ sudo umount /dev/loop1    #也可以用设备文件路径作为参数
+
+$ sync  #当对挂载设备作出更改之后，这些改变并不会被立即写入物理设备。只有当缓冲区被写满之后才会进行设备回写。但是我们可以用sync命令强制将更改即刻写入。
+{% endhighlight %}
+
+###10 生成ISO文件及混合型ISO
+{% highlight bash %}
+# cat /dev/cdrom > image.iso    #创建ISO镜像
+# dd if=/dev/cdrom of=image.iso #更好的方法
+$ mkisofs -V "Label" -o image.iso source_dir/   #创建ISO文件系统：选项-o指定了ISO文件的路径。source_dir/是作为ISO文件内容来源的目录路径，选项-V指定了ISO文件的卷标
+{% endhighlight %}
+**能够启动闪存或硬盘的混合型ISO**
+{% highlight bash %}
+# isohybrid image.iso   #把标准ISO文件转换成混合ISO，可用于写入USB存储设备
+# dd if=image.iso of=/dev/sdb1  #将该ISO写入USB存储设备
+# cat image.iso >> /dev/sdb1    #同上
+{% endhighlight %}
+**用命令行刻录ISO**
+{% highlight bash %}
+# cdrecord -v dev=/dev/cdrom image.iso  #刻录CD-ROM的方法
+# cdrecord -v dev=/dev/cdrom image.iso -speed 8 #参数8表明其刻录速度为8x。
+# cdrecord -v dev=/dev/cdrom image.iso image.iso -multi #多区段方式刻录
+$ eject #弹出光驱托盘
+{% endhighlight %}
+
