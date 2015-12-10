@@ -3,7 +3,7 @@ layout: post
 title: linux shell 脚本攻略总结（三）
 categories: [blog ]
 tags: [shell, ]
-description: shell学习第三弹
+description: 以文件之名
 ---
 
 ###1 生成任意大小的文件  
@@ -247,7 +247,142 @@ $ mkisofs -V "Label" -o image.iso source_dir/   #创建ISO文件系统：选项-
 {% highlight bash %}
 # cdrecord -v dev=/dev/cdrom image.iso  #刻录CD-ROM的方法
 # cdrecord -v dev=/dev/cdrom image.iso -speed 8 #参数8表明其刻录速度为8x。
-# cdrecord -v dev=/dev/cdrom image.iso image.iso -multi #多区段方式刻录
-$ eject #弹出光驱托盘
+# cdrecord -v dev=/dev/cdrom image.iso image.iso -multi #多区段方式刻录,一张光盘上分多次刻录数据$ eject #弹出光驱托盘
 {% endhighlight %}
 
+###11 查找文件差异并进行修补
+{% highlight bash %}
+$ vim version1.txt
+
+this is the original text
+line2
+line3
+line4
+happy hacking!
+
+$ vim version2.txt
+
+this is the original text
+line2
+line4
+happy hacking!
+GNU is not UNIX
+
+$ diff version1.txt version2.txt    #非一体化输出
+3d2
+< line3
+5a5
+> GNU is not UNIX
+
+$ diff -u version1.txt version2.txt     #一体化输出
+--- version1.txt    2015-12-10 18:37:16.186256916 +0800
++++ version2.txt    2015-12-10 18:36:14.562258532 +0800
+@@ -1,5 +1,5 @@
+ this is the original text
+ line2
+-line3
+ line4
+ happy hacking!
++GNU is not UNIX
+
+$ diff -u version1.txt version2.txt > version.patch     #重定向到一个文件
+$ patch -p1 version1.txt < version.patch    #修补，之后version1.txt的内容就和version2.txt一模一样
+patching file version1.txt
+$ patch -p1 version1.txt < version.patch    #撤销修改
+patching file version1.txt
+Reversed (or previously applied) patch detected!  Assume -R? [n] y
+{% endhighlight %}
+**生成目录的差异信息**
+{% highlight bash %}
+$ diff -Naur directory1 directory2
+{% endhighlight %}
+-N:将所有缺失的文件视为空文件 
+-a:将所有文件视为文本文件
+-u:生成一体化输出
+-r:遍历目录下的所有文件
+
+###12 使用head与tail打印文件的前10行和后10行
+{% highlight bash %}
+$ head file #打印文件前10行
+$ cat text | head   #打印文件前10行
+$ head -n 4 file    #打印前4行
+$ head -n -5 file   #打印除了后5行之外的所有行
+$ tail file #打印文件最后10行
+$ cat text | tail   #打印文件最后10行
+$ tail -n 5 file    #打印最后5行
+$ tail -n +(M+1)    #打印除了前M行之外所有的行
+{% endhighlight %}
+
+###13 只列出目录的各种方法
+{% highlight bash %}
+$ ls -d */
+$ ls -F | grep "/$"
+$ ls -l | grep "^d"
+$ find . -maxdepth 1 -type d -print
+{% endhighlight %}
+
+###14 在命令行中使用pushd和popd进行快速定位
+{% highlight bash %}
+~$ pushd /var   #在～目录下将/var压入栈
+/var ~
+$ pushd /usr/src/   #再将/usr/src/压入栈
+/usr/src /var ~
+$ dirs      #列出栈中的目录
+/usr/src /var ~ #从0开始编号
+$ pushd +2      #第二个就是～目录，所有切入～目录
+~ /usr/src /var
+~$ popd     #删除当前路径
+/usr/src /var
+$ popd +1   删除编号为1的路径
+/usr/src
+
+$ cd -  #切换到上一个路径
+{% endhighlight %}
+
+###15 统计文件的行数、单词数和字符数
+wc是一个用于统计的工具，它是Word Count的缩写。
+{% highlight bash %}
+$ wc -l file        #统计行数
+$ cat file | wc -l  #统计行数
+$ wc -w file        #统计单词数
+$ cat file | wc -w  #统计单词数
+$ wc -c file        #统计字符数
+$ cat file | wc -c  #统计字符数
+$ wc    #分别打印出文件的行数、单词数和字符数
+$ wc file -L    #打印出文件中最长一行的长度
+{% endhighlight %}
+
+###打印目录树
+tree命令以图形化的树状结构打印文件和目录。
+{% highlight bash %}
+$ tree /tmp #打印/tmp目录的树状结构
+.
+├── A.txt
+├── config-err-5alb5a
+├── evince-9062
+│   ├── image.IYH38X.png
+│   ├── image.RHS88X.png
+│   ├── image.RICK9X.png
+│   ├── image.W3398X.png
+│   ├── image.W5K28X.png
+│   └── image.ZKFJ9X.png
+├── fcitx-socket-:0
+├── hsperfdata_gycg
+├── orbit-gycg
+├── orbit-gycg-2828a868
+├── text
+├── text~
+├── unity_support_test.0
+├── version1.txt
+├── version2.txt
+└── version.patch
+
+4 directories, 15 files
+
+$ tree path -P PATTERN  #用通配符描述样式
+$ tree path -I PATTERN  #重点标记出符合某种样式之外的文件
+$ tree -h   #同时打印出文件和目录的大小
+
+$ tree PATH -H http://localhost -o out.html
+#创建一个包含目录树的输出的HTML文件
+{% endhighlight %}
