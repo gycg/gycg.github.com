@@ -6,6 +6,7 @@ tags: [website, ]
 description: 
 ---
 
+[vixra论文](vixra.org)  
 [那些让你相见恨晚的简历排版](http://mp.weixin.qq.com/s?__biz=MzA5NjM3NjgwOQ==&mid=207741361&idx=1&sn=5de49ada7c6992d9f4adad02e89d65c0&scene=23&srcid=09201u3vE5Jz0QyZgfsEbdZr#rd)  
 [Qt 5 Tutorial](http://www.bogotobogo.com/Qt/Qt5_TutorialHelloWorld.php)  
 [黑客是怎样入侵你的网站的](http://www.freebuf.com/articles/web/7359.html)  
