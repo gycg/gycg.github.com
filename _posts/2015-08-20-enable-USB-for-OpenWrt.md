@@ -6,7 +6,7 @@ tags: [internship, ]
 description: 
 ---
 
-###在配置openwrt编译系统过程中，除了基本的配置外，如果还要支持USB挂载、文件系统、语言等内容，那么就需要在\#make menuconfig界面下配置以下各项
+在配置openwrt编译系统过程中，除了基本的配置外，如果还要支持USB挂载、文件系统、语言等内容，那么就需要在#make menuconfig界面下配置以下各项:  
 ####添加USB相关支持
 Kernel modules —> USB Support —> <*>kmod-usb-core.  
 Kernel modules —> USB Support —> <*> kmod-usb-ohci. #old usb1.0  
