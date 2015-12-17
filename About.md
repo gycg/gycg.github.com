@@ -10,7 +10,7 @@ header-img: "img/facebook.jpg"
 </center>
 
 
-This is **Gao Yichen**'s personal website. It was established in *October 06,2015*. 
+This is **Gao Yichen**'s personal website.   
 I wish it is helpful to you.
 
 
