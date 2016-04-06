@@ -19,7 +19,7 @@ zhihu_username: gycg
 
 # Build settings
 #markdown: redcarpet
-markdown:kramdown
+markdown: kramdown
 redcarpet:
     extensions: ["tables"]
 rouge: pygments
