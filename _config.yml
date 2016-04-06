@@ -21,7 +21,7 @@ zhihu_username: gycg
 markdown: redcarpet
 redcarpet:
     extensions: ["tables"]
-highlighter: pygments
+rouge: pygments
 permalink: pretty
 paginate: 8
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
