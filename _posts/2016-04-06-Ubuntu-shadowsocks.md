@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 为Ubuntu配置shadowsocks
-categories: [blog ]
+categories: [blog, ]
 tags: [Ubuntu, ]
 description:
 --- 
