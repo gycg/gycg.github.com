@@ -22,6 +22,7 @@ What is Case Study: investigating trends and specific situations in scientific d
 6. Lessons Learned  
 
 II. Background information  
+
 1. What is stream processing?  
    a method of continuous computation that happens as data is flowing through the system.  
 
