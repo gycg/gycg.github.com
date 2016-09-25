@@ -10,15 +10,21 @@ description:
 
 I. Elements of Case Study  
 What is Case Study: investigating trends and specific situations in scientific disciplines  
+
 1. The Problem  
 	i.  Identify the problem  
 	ii. Explain why the problem is important  
 	iii.How was the problem identified?  
 	iv. Was the process for identifying the problem effective?  
+
 2. Steps taken to address the problem  
+
 3. Results  
+
 4. Challenges and how they were met  
+
 5. Beyond Results  
+
 6. Lessons Learned  
 
 II. Background information  
