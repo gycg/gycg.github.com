@@ -61,4 +61,4 @@ III. Reference
 [Realtime Event Processing in Hadoop](http://hortonworks.com/hadoop-tutorial/realtime-event-processing-nifi-kafka-storm/)  
 [distributed real time](http://www.cakesolutions.net/teamblogs/introduction-into-distributed-real-time-stream-processing)  
 [Strom and spark](Strom and spark)  
-
+[Case Study Research Design](https://explorable.com/case-study-research-design)

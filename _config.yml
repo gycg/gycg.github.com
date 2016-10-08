@@ -46,3 +46,4 @@ comments :
     provider : duoshuo
     duoshuo :
         short_name : gycg
+gems: [jekyll-paginate]
