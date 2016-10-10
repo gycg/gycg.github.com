@@ -25,6 +25,7 @@ description:
 **Machine learning**  
 [Machine learning coursera](https://www.coursera.org/learn/machine-learning/home/welcome)  
 [UFLDL](http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial)  
+[TensorFlow](https://www.tensorflow.org/versions/r0.11/get_started/index.html)
 
 **Algorithm**  
 [CLRS Videos](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/)  
