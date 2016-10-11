@@ -23,6 +23,7 @@ description:
 [Topcoder](https://arena.topcoder.com/#/u/dashboard)  
 
 **Machine learning**  
+[Machine learning Stanford](https://www.youtube.com/playlist?list=PLA89DCFA6ADACE599)  
 [Machine learning coursera](https://www.coursera.org/learn/machine-learning/home/welcome)  
 [UFLDL](http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial)  
 [TensorFlow](https://www.tensorflow.org/versions/r0.11/get_started/index.html)
@@ -33,6 +34,13 @@ description:
 **LaTex**  
 [Getting Started with LaTeX](http://www.maths.tcd.ie/~dwilkins/LaTeXPrimer/)  
 
+**Convex Optimization**  
+[Convex Optimization YouTube](https://www.youtube.com/playlist?list=PL3940DD956CDF0622)  
+[Convex a](http://stanford.edu/class/ee364a/lectures.html)  
+[Convex b](http://stanford.edu/class/ee364b/lectures.html)  
+[CVXPY tutorial website](http://www.cvxpy.org/en/latest/tutorial/index.html)
+
 **Misc**  
 [BBC future](http://www.bbc.com/future)  
 [Youtube 99U](https://www.youtube.com/user/99Uvideos)  
+
