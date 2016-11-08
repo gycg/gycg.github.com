@@ -6,14 +6,30 @@ tags: [plan,  ]
 description: 
 ---
 
+**LaTex**  
+[Getting Started with LaTeX](http://www.maths.tcd.ie/~dwilkins/LaTeXPrimer/)  
+[A Not So Short Introduction to LaTeX2e](https://tobi.oetiker.ch/lshort/lshort.pdf)  
+
 **Python tutorial**  
+[The Python Tutorial](https://docs.python.org/3/tutorial/index.html)  
 [Numpy Documentation](https://docs.scipy.org/doc/numpy-dev/user/quickstart.html)  
 [Pandas Documentation](http://pandas.pydata.org/pandas-docs/version/0.17.0/index.html)  
 [Scipy Documentation](http://docs.scipy.org/doc/scipy/reference/)  
 [Statsmodels Documentation](http://statsmodels.sourceforge.net/stable/)  
 [Scikit-Learn Documentation](http://scikit-learn.org/stable/documentation.html)  
 [Matplotlib Documentation](http://matplotlib.org/)  
-[The Python Tutorial](https://docs.python.org/3/tutorial/index.html)  
+
+**Convex Optimization**  
+[Convex Optimization YouTube](https://www.youtube.com/playlist?list=PL3940DD956CDF0622)  
+[Convex a](http://stanford.edu/class/ee364a/lectures.html)  
+[Convex b](http://stanford.edu/class/ee364b/lectures.html)  
+[CVXPY tutorial website](http://www.cvxpy.org/en/latest/tutorial/index.html)
+
+**Machine learning**  
+[Machine learning Stanford](https://www.youtube.com/playlist?list=PLA89DCFA6ADACE599)  
+[Machine learning coursera](https://www.coursera.org/learn/machine-learning/home/welcome)  
+[UFLDL](http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial)  
+[TensorFlow](https://www.tensorflow.org/versions/r0.11/get_started/index.html)
 
 **Competition**  
 [LeetCode](https://leetcode.com/problemset/algorithms/)  
@@ -22,23 +38,8 @@ description:
 [Kaggle](https://www.kaggle.com)  
 [Topcoder](https://arena.topcoder.com/#/u/dashboard)  
 
-**Machine learning**  
-[Machine learning Stanford](https://www.youtube.com/playlist?list=PLA89DCFA6ADACE599)  
-[Machine learning coursera](https://www.coursera.org/learn/machine-learning/home/welcome)  
-[UFLDL](http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial)  
-[TensorFlow](https://www.tensorflow.org/versions/r0.11/get_started/index.html)
-
 **Algorithm**  
 [CLRS Videos](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/)  
-
-**LaTex**  
-[Getting Started with LaTeX](http://www.maths.tcd.ie/~dwilkins/LaTeXPrimer/)  
-
-**Convex Optimization**  
-[Convex Optimization YouTube](https://www.youtube.com/playlist?list=PL3940DD956CDF0622)  
-[Convex a](http://stanford.edu/class/ee364a/lectures.html)  
-[Convex b](http://stanford.edu/class/ee364b/lectures.html)  
-[CVXPY tutorial website](http://www.cvxpy.org/en/latest/tutorial/index.html)
 
 **Misc**  
 [BBC future](http://www.bbc.com/future)  
