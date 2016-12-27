@@ -42,6 +42,9 @@ description:
 **Algorithm**  
 [CLRS Videos](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/)  
 
+**NLP**  
+[Michael Collins](http://www.cs.columbia.edu/~mcollins/notes-spring2013.html)  
+
 **Misc**  
 [BBC future](http://www.bbc.com/future)  
 [Youtube 99U](https://www.youtube.com/user/99Uvideos)  
