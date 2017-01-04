@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 为Ubuntu配置shadowsocks
+title: 机器学习-王威廉
 categories: [blog, ]
-tags: [Ubuntu, ]
+tags: [MachineLearning, ]
 description:
 --- 
 
