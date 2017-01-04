@@ -48,4 +48,7 @@ description:
 **Misc**  
 [BBC future](http://www.bbc.com/future)  
 [Youtube 99U](https://www.youtube.com/user/99Uvideos)  
+[英文巴士](http://www.en84.com/)  
 
+**Job**  
+[攻略拿走不謝！應屆畢業生如何在新加坡找工作？](http://www.twgreatdaily.com/cat39/node984894)  
