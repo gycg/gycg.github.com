@@ -16,7 +16,7 @@ header-img: "img/facebook.jpg"
 
 <ul class="listing">
 {% for tag in site.tags %}
-<li id="{{ tag[0] }}">{{ tag[0] }}</li>
+<h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
 {% for post in tag[1] %}
   <li class="listing-item">
   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
