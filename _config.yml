@@ -19,11 +19,21 @@ zhihu_username: gycg
 
 # Build settings
 #markdown: redcarpet
-#markdown: kramdown
 #redcarpet:
 #    extensions: ["tables"]
-rouge: pygments
-permalink: pretty
+
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+#  auto_ids: true
+#  syntax_highlighter: rouge
+
+gems: 
+- jekyll-gallery-generator
+- jekyll-paginate
+#rouge: pygments
+permalink: none
 paginate: 8
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 
