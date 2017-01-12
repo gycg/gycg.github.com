@@ -22,10 +22,10 @@ zhihu_username: gycg
 #redcarpet:
 #    extensions: ["tables"]
 
-highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM
+highlighter: rouge
 #  auto_ids: true
 #  syntax_highlighter: rouge
 
