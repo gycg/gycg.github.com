@@ -1,7 +1,6 @@
 # Site settings
 title: "Web Hacker"
 header-img: "img/facebook.jpg"
-#email: your-email@domain.com
 description: "高一宸"
 baseurl: ""
 url: "http://gycg.github.com" # the base hostname & protocol for your site
@@ -23,18 +22,9 @@ zhihu_username: gycg
 #    extensions: ["tables"]
 
 markdown: kramdown
-kramdown:
-  input: GFM
 highlighter: rouge
-#  auto_ids: true
-#  syntax_highlighter: rouge
-
-gems: 
-- jekyll-gallery-generator
-- jekyll-paginate
-#rouge: pygments
-permalink: none
-paginate: 8
+permalink: pretty
+paginate: 15
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
