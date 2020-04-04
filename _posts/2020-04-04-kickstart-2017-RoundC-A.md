@@ -27,7 +27,7 @@ description:
 
 当字符串长度为奇数时，可以得到第二个和倒数第二个字符，但是这两个都是偶数位，奇数位的数字不能唯一确定。所以字符串长度为奇数时，都输出“ANBIGUOUS”。
 
-{% highlight bash %}
+{% highlight c++ %}
 #include <iostream>
 #include <vector>
 
